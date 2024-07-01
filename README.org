@@ -2,6 +2,8 @@
 
 Project for the Principles for Software Composition exam, a.y. 23/24.
 
+[[file:screenshot.png]]
+
 ** Build instructions
 
 The program relies on the Ebitengine library, which on some platforms has external dependencies. Those should be installed following the [[https:https://nix.dev/manual/nix/2.23/command-ref/nix-shell.html][instructions]]. On NixOS, all dependencies can be downloaded by activating the ~shell.nix~ file with ~nix-shell~.

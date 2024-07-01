@@ -1,15 +1,4 @@
 digraph network {
-1 [label="producer"] // "from 1" 1500 1 false 336 235
-1 -> 4
-1 -> 3
-1 -> 6
-
-2 [label="producer"] // "world" 1000 0 false 282 372
-2 -> 1
-
-7 [label="discarder"] // "from 7" 0 2 false 270 153
-7 -> 1
-
 3 [label="sink"] // "from 3" 0 0 false 404 345
 
 4 [label="sink"] // "from 4" 0 0 false 460 132
@@ -20,5 +9,16 @@ digraph network {
 0 -> 2
 0 -> 1
 0 -> 7
+
+1 [label="forwarder"] // "from 1" 0 0 false 336 235
+1 -> 4
+1 -> 3
+1 -> 6
+
+2 [label="producer"] // "world" 1000 0 false 282 372
+2 -> 1
+
+7 [label="discarder"] // "from 7" 0 2 false 270 153
+7 -> 1
 
 }

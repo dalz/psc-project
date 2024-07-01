@@ -228,6 +228,7 @@ func addTextInput(
 	label string,
 	validator widget.TextInputValidationFunc,
 	handler widget.TextInputChangedHandlerFunc,
+	allowDuplicateSubmit bool,
 ) *widget.TextInput {
 	ti := widget.NewTextInput(
 		widget.TextInputOpts.WidgetOpts(
@@ -253,6 +254,8 @@ func addTextInput(
 
 		widget.TextInputOpts.Validation(validator),
 		widget.TextInputOpts.SubmitHandler(handler),
+
+		widget.TextInputOpts.AllowDuplicateSubmit(allowDuplicateSubmit),
 	)
 
 	lbl := widget.NewText(
@@ -297,14 +300,18 @@ func makeNodeCtlWindow(g *Game) {
 
 		func(args *widget.TextInputChangedEventArgs) {
 			g.net.setName(g.selectedNode, args.InputText)
-		})
+		},
+
+		false)
 
 	sendTextInput = addTextInput(container, "Send text",
 		NO_VALIDATOR,
 
 		func(args *widget.TextInputChangedEventArgs) {
 			g.net.setSendText(g.selectedNode, args.InputText)
-		})
+		},
+
+		false)
 
 	sendIntervalInput = addTextInput(container, "Send interval (ms)",
 		func(input string) (bool, *string) {
@@ -316,7 +323,9 @@ func makeNodeCtlWindow(g *Game) {
 		func(args *widget.TextInputChangedEventArgs) {
 			ms, _ := strconv.Atoi(args.InputText)
 			g.net.setSendInterval(g.selectedNode, ms)
-		})
+		},
+
+		false)
 
 	relayModeLabel := widget.NewText(
 		widget.TextOpts.Text("Relay mode: ", face, color.White),
@@ -408,7 +417,9 @@ func makePathSelectWindow() {
 		func(args *widget.TextInputChangedEventArgs) {
 			pathSelectHandler(args.InputText)
 			pathSelectWindow.Close()
-		})
+		},
+
+		true)
 
 	buttonsRow := widget.NewContainer(
 		widget.ContainerOpts.Layout(widget.NewRowLayout(
