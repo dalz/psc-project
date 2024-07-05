@@ -8,7 +8,7 @@ Project for the Principles for Software Composition exam, a.y. 23/24.
 
 The program relies on the Ebitengine library, which on some platforms has external dependencies. Those should be installed following the [[https:https://nix.dev/manual/nix/2.23/command-ref/nix-shell.html][instructions]]. On NixOS, all dependencies can be downloaded by activating the ~shell.nix~ file with ~nix-shell~.
 
-Then, the program can be compiled and ran with the command ~go run .~.
+Then, the program can be compiled and run with the command ~go run .~.
 
 ** Usage
 
